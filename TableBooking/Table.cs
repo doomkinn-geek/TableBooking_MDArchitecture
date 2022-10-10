@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace TableBooking
 {
     public class Table
-    {        
+    {
+        private readonly object _lock = new object();
         public State State { get; private set; }
         public int SeatsCount { get; }
         public int Id { get; }
@@ -19,10 +20,14 @@ namespace TableBooking
         }
         public bool SetState(State state)
         {
-            if(state == State)
-                return false;
-            State = state;
-            return true;
+            lock (_lock)
+            {
+                if (state == State)
+                    return false;
+
+                State = state;
+                return true;
+            }
         }        
     }
 }
