@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TableBooking
 {
     public class Table
-    {
+    {        
         public State State { get; private set; }
         public int SeatsCount { get; }
         public int Id { get; }
@@ -15,7 +15,7 @@ namespace TableBooking
         {
             Id = id;
             State = State.Free;
-            SeatsCount = new Random().Next(2, 5);
+            SeatsCount = new Random().Next(2, 5);            
         }
         public bool SetState(State state)
         {
@@ -23,6 +23,6 @@ namespace TableBooking
                 return false;
             State = state;
             return true;
-        }
+        }        
     }
 }
