@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>dotnet-WorkerService1-3D9E8EC6-FE59-445F-A882-33D68AB3B599</UserSecretsId>
   </PropertyGroup>
 

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>dotnet-Restaurant.Kitchen-693D618A-766E-49EB-94C3-00182FBFBA20</UserSecretsId>
   </PropertyGroup>
 
