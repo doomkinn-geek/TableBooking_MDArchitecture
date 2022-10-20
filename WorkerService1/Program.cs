@@ -1,15 +1,11 @@
+using System;
 using GreenPipes;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Restaurant.Notification;
 using Restaurant.Notification.Consumers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace WorkerService1
+namespace Restaurant.Notification
 {
     public class Program
     {
@@ -19,14 +15,14 @@ namespace WorkerService1
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddMassTransit(x =>
                     {
-                        x.AddConsumer<NotifierTableBookedConsumer>();
-                        x.AddConsumer<KitchenReadyConsumer>();
+                        x.AddConsumer<NotifyConsumer>()
+                            .Endpoint(e => e.Temporary = true);
 
                         x.UsingRabbitMq((context, cfg) =>
                         {
@@ -43,10 +39,8 @@ namespace WorkerService1
 
                             cfg.ConfigureEndpoints(context);
                         });
-
-
-
                     });
+
                     services.AddSingleton<Notifier>();
                     services.AddMassTransitHostedService(true);
                 });

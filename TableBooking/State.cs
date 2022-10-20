@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TableBooking
+﻿namespace Restaurant.Booking
 {
-    public enum State
+    public enum TableState
     {
-        ///<summary>
-        ///Стол свободен
-        ///</summary>
-        Free = 0,
-
-        ///<summary>
-        ///Стол занят
-        ///</summary>
-        Booked = 1
+        /// <summary>
+        /// Стол свободен
+        /// </summary>
+        Free = 0, 
+        
+        /// <summary>
+        /// Стол занят
+        /// </summary>
+        Booked = 1 
     }
 }

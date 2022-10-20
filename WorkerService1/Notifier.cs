@@ -39,5 +39,9 @@ namespace Restaurant.Notification
                     throw new ArgumentOutOfRangeException();
             }
         }
+        public void Notify(Guid orderId, Guid clientId, string message)
+        {
+            Console.WriteLine($"[OrderID: {orderId}] Уважаемый клиент {clientId}! {message}");
+        }
     }
 }
