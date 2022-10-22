@@ -1,16 +1,19 @@
 ﻿using System;
 
-public interface IBookingCancellation
+namespace Restaurant.Messages
 {
-    public Guid OrderId { get; }
-}
-
-public class BookingCancellation : IBookingCancellation
-{
-    public BookingCancellation(Guid orderId)
+    public interface IBookingCancellation
     {
-        OrderId = orderId;
+        public Guid OrderId { get; }
     }
 
-    public Guid OrderId { get; }
+    public class BookingCancellation : IBookingCancellation
+    {
+        public BookingCancellation(Guid orderId)
+        {
+            OrderId = orderId;
+        }
+
+        public Guid OrderId { get; }
+    }
 }

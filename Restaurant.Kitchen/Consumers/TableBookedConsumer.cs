@@ -5,13 +5,15 @@ using Restaurant.Messages;
 
 namespace Restaurant.Kitchen.Consumers
 {
-    internal class KitchenBookingRequestedConsumer : IConsumer<IBookingRequest>
+    public class KitchenBookingRequestedConsumer : IConsumer<IBookingRequest>
     {
         private readonly Manager _manager;
+        private readonly IBus _bus;
 
-        public KitchenBookingRequestedConsumer(Manager manager)
+        public KitchenBookingRequestedConsumer(Manager manager, IBus bus)
         {
             _manager = manager;
+            _bus = bus;
         }
         
         public async Task Consume(ConsumeContext<IBookingRequest> context)
@@ -22,7 +24,7 @@ namespace Restaurant.Kitchen.Consumers
             await Task.Delay(5000);
             
             if(_manager.CheckKitchenReady(context.Message.OrderId, context.Message.PreOrder))
-                await context.Publish<IKitchenReady>(new KitchenReady(context.Message.OrderId, true));
+                await _bus.Publish<IKitchenReady>(new KitchenReady(context.Message.OrderId, true));
         }
     }
 }

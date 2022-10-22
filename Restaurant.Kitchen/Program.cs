@@ -1,11 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using GreenPipes;
+using System.Text;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Restaurant.Booking.Consumers;
 using Restaurant.Kitchen.Consumers;
 
 namespace Restaurant.Kitchen
@@ -18,8 +16,9 @@ namespace Restaurant.Kitchen
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddMassTransit(x =>
@@ -53,6 +52,14 @@ namespace Restaurant.Kitchen
                     });
 
                     services.AddSingleton<Manager>();
+
+                    services.Configure<MassTransitHostOptions>(options =>
+                    {
+                        options.WaitUntilStarted = true;
+                        options.StartTimeout = TimeSpan.FromSeconds(30);
+                        options.StopTimeout = TimeSpan.FromMinutes(1);
+                    });
                 });
+        }
     }
 }

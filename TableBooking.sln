@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Kitchen", "Resta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Messages", "Restaurant.Messages\Restaurant.Messages.csproj", "{E9D6ABC9-3752-48F2-A412-0AF6963A3D7D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Tests", "Restaurant.Tests\Restaurant.Tests.csproj", "{FFD24F2E-F3CD-4524-9709-071774011440}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,26 @@ Global
 		{E9D6ABC9-3752-48F2-A412-0AF6963A3D7D}.Release|x64.Build.0 = Release|Any CPU
 		{E9D6ABC9-3752-48F2-A412-0AF6963A3D7D}.Release|x86.ActiveCfg = Release|Any CPU
 		{E9D6ABC9-3752-48F2-A412-0AF6963A3D7D}.Release|x86.Build.0 = Release|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Debug|ARM.Build.0 = Debug|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Debug|x64.Build.0 = Debug|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Debug|x86.Build.0 = Debug|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Release|ARM.ActiveCfg = Release|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Release|ARM.Build.0 = Release|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Release|ARM64.Build.0 = Release|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Release|x64.ActiveCfg = Release|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Release|x64.Build.0 = Release|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Release|x86.ActiveCfg = Release|Any CPU
+		{FFD24F2E-F3CD-4524-9709-071774011440}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
