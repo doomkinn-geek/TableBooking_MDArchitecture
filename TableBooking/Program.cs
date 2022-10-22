@@ -1,7 +1,9 @@
 ﻿using System;
 using MassTransit;
+using Messaging.InMemory;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RestarauntBooking;
 using Restaurant.Booking;
 using Restaurant.Booking.Consumers;
 
@@ -21,26 +23,17 @@ namespace Restaurant.Booking
                 {
                     services.AddMassTransit(x =>
                     {
-                        x.AddConsumer<RestaurantBookingRequestConsumer>()
-                            .Endpoint(e =>
-                            {
-                                e.Temporary = true;
-                            });
-
-                        x.AddConsumer<BookingRequestFaultConsumer>()
-                            .Endpoint(e =>
-                            {
-                                e.Temporary = true;
-                            });
+                        x.AddConsumer<RestaurantBookingRequestConsumer>();
+                        //   x.AddConsumer<BookingRequestFaultConsumer>();
 
                         x.AddSagaStateMachine<RestaurantBookingSaga, RestaurantBooking>()
-                            .Endpoint(e => e.Temporary = true)
                             .InMemoryRepository();
 
                         x.AddDelayedMessageScheduler();
 
                         x.UsingRabbitMq((context, cfg) =>
                         {
+                            cfg.Durable = false;
                             cfg.UseDelayedMessageScheduler();
                             cfg.UseInMemoryOutbox();
                             cfg.ConfigureEndpoints(context);
@@ -48,13 +41,12 @@ namespace Restaurant.Booking
 
                     });
 
-                    services.AddMassTransitHostedService();
-
                     services.AddTransient<RestaurantBooking>();
                     services.AddTransient<RestaurantBookingSaga>();
                     services.AddTransient<Restaurant>();
+                    services.AddSingleton<IInMemoryRepository<BookingRequestModel>, InMemoryRepository<BookingRequestModel>>();
 
                     services.AddHostedService<Worker>();
-                });    
+                });
     }
 }
