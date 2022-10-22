@@ -24,17 +24,28 @@ namespace Restaurant.Kitchen
                 {
                     services.AddMassTransit(x =>
                     {
-                        x.AddConsumer<KitchenBookingRequestedConsumer>(
-                            configurator =>
-                            {
-                                
-                            })
+                        x.AddConsumer<TableBookedConsumer>(
+                                configurator =>
+                                {
+                                    configurator.UseScheduledRedelivery(r =>
+                                    {
+                                        r.Intervals(TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(20),
+                                        TimeSpan.FromSeconds(30));
+                                    });
+                                    configurator.UseMessageRetry(
+                                    r =>
+                                    {
+                                        r.Incremental(3, TimeSpan.FromSeconds(1),
+                                            TimeSpan.FromSeconds(2));
+                                    }
+                                );
+                                })
                             .Endpoint(e =>
                             {
                                 e.Temporary = true;
                             }); ;
 
-                        x.AddConsumer<KitchenBookingRequestFaultConsumer>()
+                        x.AddConsumer<BookingRequestFaultConsumer>()
                             .Endpoint(e =>
                             {
                                 e.Temporary = true;
