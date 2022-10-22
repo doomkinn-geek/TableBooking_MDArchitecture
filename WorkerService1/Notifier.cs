@@ -5,8 +5,7 @@ using System.Collections.Generic;
 namespace Restaurant.Notification
 {
     public class Notifier
-    {
-        //импровизированный кэш для хранения статусов, номера заказа и клиента
+    {        
         private readonly ConcurrentDictionary<Guid, Tuple<Guid?, Accepted>> _state = new ();
         
         public void Accept(Guid orderId, Accepted accepted, Guid? clientId = null)
